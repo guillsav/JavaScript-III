@@ -130,21 +130,63 @@ console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
 // * Create two new objects, one a villain and one a hero and fight it out with methods!
 
 function Villain(villAttrs) {
+  console.log(villAttrs);
   Humanoid.call(this, villAttrs);
 }
 
 Villain.prototype = Object.create(Humanoid.prototype);
 
+function Hero(heroAttrs) {
+  Villain.call(this, heroAttrs);
+}
+
+Hero.prototype = Object.create(Villain.prototype);
+
+const villain1 = new Villain({
+  name: 'superVillain',
+  dimensions: {
+    length: 1,
+    width: 2,
+    height: 4
+  },
+  healthPoints: 8,
+  team: 'Villains'
+});
+
 Villain.prototype.removeHealthPoints = function() {
-  if (this.healthPoints >= 10) {
-    this.healthPoints = 5;
+  --this.healthPoints;
+  if (this.healthPoints > 0) {
     return `${this.name} your health points just dropped to ${
       this.healthPoints
     }!`;
-  } else if (this.healthPoints === 5) {
-    this.healthPoints = 0;
-    return `You are now dead your health points dropped to ${
-      this.healthPoints
-    }!`;
   }
+  return `${this.name} is dead his health points dropped to ${
+    this.healthPoints
+  }!`;
 };
+
+const hero1 = new Hero({
+  name: 'myHero',
+  dimensions: {
+    length: 2,
+    width: 2,
+    height: 4
+  },
+  healthPoints: 10,
+  team: 'Avengers'
+});
+
+console.log(villain1.removeHealthPoints());
+console.log(hero1.removeHealthPoints());
+console.log(villain1.removeHealthPoints());
+console.log(hero1.removeHealthPoints());
+console.log(villain1.removeHealthPoints());
+console.log(hero1.removeHealthPoints());
+console.log(villain1.removeHealthPoints());
+console.log(villain1.removeHealthPoints());
+console.log(hero1.removeHealthPoints());
+console.log(villain1.removeHealthPoints());
+console.log(hero1.removeHealthPoints());
+console.log(villain1.removeHealthPoints());
+console.log(hero1.removeHealthPoints());
+console.log(villain1.removeHealthPoints());
