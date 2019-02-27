@@ -136,15 +136,19 @@ function Villain(villAttrs) {
 
 Villain.prototype = Object.create(Humanoid.prototype);
 
-Villain.prototype.removeHealthPoints = function() {
-  --this.healthPoints;
-  if (this.healthPoints > 0) {
+Villain.prototype.removeHealthPoints = function(target) {
+  --target.healthPoints;
+  if (target.healthPoints > 0) {
     return console.log(
-      `${this.name} your health points just dropped to ${this.healthPoints}!`
+      `${target.name} your health points just dropped to ${
+        target.healthPoints
+      }!`
     );
   }
   return console.log(
-    `${this.name} is dead his health points dropped to ${this.healthPoints}!`
+    `${target.name} is dead his health points dropped to ${
+      target.healthPoints
+    }!`
   );
 };
 
@@ -176,18 +180,19 @@ const hero1 = new Hero({
   team: 'Avengers'
 });
 
-villain1.removeHealthPoints();
-hero1.removeHealthPoints();
-villain1.removeHealthPoints();
-hero1.removeHealthPoints();
-villain1.removeHealthPoints();
-hero1.removeHealthPoints();
-villain1.removeHealthPoints();
-hero1.removeHealthPoints();
-villain1.removeHealthPoints();
-hero1.removeHealthPoints();
-villain1.removeHealthPoints();
-hero1.removeHealthPoints();
-villain1.removeHealthPoints();
-hero1.removeHealthPoints();
-villain1.removeHealthPoints();
+villain1.removeHealthPoints(hero1);
+hero1.removeHealthPoints(villain1);
+villain1.removeHealthPoints(hero1);
+hero1.removeHealthPoints(villain1);
+villain1.removeHealthPoints(hero1);
+hero1.removeHealthPoints(villain1);
+villain1.removeHealthPoints(hero1);
+hero1.removeHealthPoints(villain1);
+villain1.removeHealthPoints(hero1);
+hero1.removeHealthPoints(villain1);
+villain1.removeHealthPoints(hero1);
+hero1.removeHealthPoints(villain1);
+villain1.removeHealthPoints(hero1);
+hero1.removeHealthPoints(villain1);
+villain1.removeHealthPoints(hero1);
+hero1.removeHealthPoints(villain1);
