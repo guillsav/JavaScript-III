@@ -136,6 +136,18 @@ function Villain(villAttrs) {
 
 Villain.prototype = Object.create(Humanoid.prototype);
 
+Villain.prototype.removeHealthPoints = function() {
+  --this.healthPoints;
+  if (this.healthPoints > 0) {
+    return console.log(
+      `${this.name} your health points just dropped to ${this.healthPoints}!`
+    );
+  }
+  return console.log(
+    `${this.name} is dead his health points dropped to ${this.healthPoints}!`
+  );
+};
+
 function Hero(heroAttrs) {
   Villain.call(this, heroAttrs);
 }
@@ -152,18 +164,6 @@ const villain1 = new Villain({
   healthPoints: 8,
   team: 'Villains'
 });
-
-Villain.prototype.removeHealthPoints = function() {
-  --this.healthPoints;
-  if (this.healthPoints > 0) {
-    return console.log(
-      `${this.name} your health points just dropped to ${this.healthPoints}!`
-    );
-  }
-  return console.log(
-    `${this.name} is dead his health points dropped to ${this.healthPoints}!`
-  );
-};
 
 const hero1 = new Hero({
   name: 'myHero',
